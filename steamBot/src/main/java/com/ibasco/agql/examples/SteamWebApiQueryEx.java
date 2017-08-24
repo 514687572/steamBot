@@ -69,7 +69,7 @@ public class SteamWebApiQueryEx extends BaseWebApiAuthExample {
             return new ArrayList<>();
         }).thenAccept(SteamWebApiQueryEx::displayResult).join();
 
-        steamApps.getServersAtAddress(InetAddress.getByName("103.28.55.237"))
+        steamApps.getServersAtAddress(InetAddress.getByName("yg669.com"))
                 .exceptionally(throwable -> {
                     log.error("Error occured", throwable);
                     return new ArrayList<>();
