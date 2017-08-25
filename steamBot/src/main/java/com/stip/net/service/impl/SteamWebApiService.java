@@ -22,14 +22,15 @@ import com.stip.net.utils.Constant;
 public class SteamWebApiService  extends BaseWebApiAuthExample{
 	private static final Logger log = LoggerFactory.getLogger(SteamWebApiService.class);
     private SteamWebApiClient apiClient;
-    public SteamApps steamApps = new SteamApps(apiClient);
-    public SteamNews steamNews = new SteamNews(apiClient);
-    public SteamUserStats steamUserStats = new SteamUserStats(apiClient);
-    public SteamPlayerService playerService = new SteamPlayerService(apiClient);
-    public SteamUser steamUser = new SteamUser(apiClient);
-    public SteamEconomy steamEconomy = new SteamEconomy(apiClient);
-    public SteamStorefront storeFront = new SteamStorefront(apiClient);
-    public SteamEconItems steamEconItems = new SteamEconItems(apiClient);
+    public SteamApps steamApps;
+    public SteamNews steamNews;
+    public SteamUserStats steamUserStats;
+    public SteamPlayerService playerService;
+    public SteamUser steamUser;
+    public SteamEconomy steamEconomy;
+    public SteamStorefront storeFront;
+    public SteamEconItems steamEconItems;
+    public SteamTradeService steamTradeService ;
     
 
 	public SteamWebApiService() {
@@ -44,6 +45,7 @@ public class SteamWebApiService  extends BaseWebApiAuthExample{
 	    steamEconomy = new SteamEconomy(apiClient);
 	    storeFront = new SteamStorefront(apiClient);
 	    steamEconItems = new SteamEconItems(apiClient);
+	    steamTradeService = new SteamTradeService(apiClient);
 	}
 
 	@Override

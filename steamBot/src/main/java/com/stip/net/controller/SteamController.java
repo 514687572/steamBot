@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonObject;
 import com.ibasco.agql.protocols.valve.steam.webapi.pojos.SteamPlayerProfile;
 import com.stip.net.service.impl.SteamWebApiService;
 
@@ -53,10 +54,16 @@ public class SteamController extends AbstractController{
 		return result;
 	}
 	
-	@RequestMapping(value = "/createOrder.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public Map<String, Object> createOrder(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value = "/getTradeStatus.do", method = { RequestMethod.GET, RequestMethod.POST })
+	public Map<String, Object> getTradeStatus(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		result = new HashMap<String, Object>();
-		String steamId=request.getParameter("steamId");
+		String tradeid=request.getParameter("tradeid");
+		steamWebApiService.steamTradeService.GetTradeStatus(tradeid).thenAccept(new Consumer<JsonObject>() {
+			@Override
+			public void accept(JsonObject t) {
+				log.info("{}", t);
+			}
+		}).join();
 		
 		return result;
 	}
